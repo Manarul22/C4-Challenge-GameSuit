@@ -18,9 +18,4 @@ class Controller(private val listener: Callback) {
             else -> listener.showWinner(1)
         }
     }
-
-    fun clickBatu() {
-
-    }
-
 }
