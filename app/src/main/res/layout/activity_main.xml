@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity"
+    tools:ignore="ContentDescription">
+
+    <ImageView
+        android:id="@+id/imgJudul"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:src="@drawable/judul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/ll_pemain1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgJudul">
+
+        <TextView
+            android:id="@+id/tvPemain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/atma"
+            android:rotation="-10"
+            android:text="@string/pemain_1"
+            android:textColor="#00BCD4"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/batuPlayer"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/batu" />
+
+        <ImageView
+            android:id="@+id/kertasPlayer"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/kertas" />
+
+        <ImageView
+            android:id="@+id/guntingPlayer"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/gunting" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_com"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgJudul">
+
+        <TextView
+            android:id="@+id/tvCom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/atma"
+            android:rotation="-10"
+            android:text="@string/com"
+            android:textColor="#00BCD4"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/batuCom"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/batu" />
+
+        <ImageView
+            android:id="@+id/kertasCom"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/kertas" />
+
+        <ImageView
+            android:id="@+id/guntingCom"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/gunting" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgVersus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:src="@drawable/vs"
+        app:layout_constraintEnd_toStartOf="@id/ll_com"
+        app:layout_constraintStart_toEndOf="@id/ll_pemain1"
+        app:layout_constraintTop_toBottomOf="@id/imgJudul" />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/img_p1_menang"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="180dp"-->
+<!--        android:src="@drawable/p1menang"-->
+<!--        android:visibility="invisible"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/ll_com"-->
+<!--        app:layout_constraintStart_toEndOf="@id/ll_pemain1"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/img_judul" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/img_com_menang"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="180dp"-->
+<!--        android:src="@drawable/p2menang"-->
+<!--        android:visibility="invisible"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/ll_com"-->
+<!--        app:layout_constraintStart_toEndOf="@id/ll_pemain1"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/img_judul" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/img_draw"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:rotation="-10"-->
+<!--        android:src="@drawable/draw"-->
+<!--        android:layout_marginTop="180dp"-->
+<!--        android:visibility="invisible"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/ll_com"-->
+<!--        app:layout_constraintStart_toEndOf="@id/ll_pemain1"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/img_judul" />-->
+
+    <ImageView
+        android:id="@+id/imgRefresh"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/refresh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
