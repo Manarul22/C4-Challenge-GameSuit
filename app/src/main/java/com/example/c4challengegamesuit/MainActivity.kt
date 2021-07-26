@@ -27,64 +27,26 @@ class MainActivity : AppCompatActivity(), Callback {
         val dataChoicePlayer = arrayListOf(batu, kertas, gunting)
         val dataRandomCom = arrayListOf(rock, paper, scissors)
 
-        batu.setOnClickListener {
-            for (item in dataChoicePlayer) {
-                if (item == dataChoicePlayer[0]) {
-                    item.setBackgroundResource(R.drawable.select)
-                } else {
-                    item.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
-                }
-            }
-            val comPlay = (0..2).random()
-            for (item in dataRandomCom) {
-                if (item == dataRandomCom[comPlay]) {
-                    item.setBackgroundResource(R.drawable.select)
-                } else {
-                    item.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
-                }
-            }
-            controller.checkWinner(1, comPlay)
-            Log.d("Main", "$comPlay Selected")
-        }
+        /** - Kode ImageView pada saat click ini sama
+         *  - Harus dibuat reusable
+            - Kesimpulan jika kode yang dipakai konsepnya sama makan buat reusable */
 
-        kertas.setOnClickListener {
-            for (item in dataChoicePlayer) {
-                if (item == dataChoicePlayer[1]) {
-                    item.setBackgroundResource(R.drawable.select)
-                } else {
-                    item.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
+        dataChoicePlayer.forEachIndexed { index, imageView ->
+            imageView.setOnClickListener {
+                for (item in dataChoicePlayer) {
+                    if (item == dataChoicePlayer[index])
+                        item.setBackgroundResource(R.drawable.select)
+                    else item.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
                 }
-            }
-            val comPlay = (0..2).random()
-            for (item in dataRandomCom) {
-                if (item == dataRandomCom[comPlay]) {
-                    item.setBackgroundResource(R.drawable.select)
-                } else {
-                    item.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
+                val comPlay = (0..2).random()
+                for (item in dataRandomCom) {
+                    if (item == dataRandomCom)
+                        item.setBackgroundResource(R.drawable.select)
+                    else item.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
                 }
+                controller.checkWinner(index.plus(1), comPlay)
+                Log.d("Main", "$comPlay Selected")
             }
-            controller.checkWinner(2, comPlay)
-            Log.d("Main", "$comPlay Selected")
-        }
-
-        gunting.setOnClickListener {
-            for (item in dataChoicePlayer) {
-                if (item == dataChoicePlayer[2]) {
-                    item.setBackgroundResource(R.drawable.select)
-                } else {
-                    item.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
-                }
-            }
-            val comPlay = (0..2).random()
-            for (item in dataRandomCom) {
-                if (item == dataRandomCom[comPlay]) {
-                    item.setBackgroundResource(R.drawable.select)
-                } else {
-                    item.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
-                }
-            }
-            controller.checkWinner(3, comPlay)
-            Log.d("Main", "$comPlay Selected")
         }
 
         reset.setOnClickListener {
