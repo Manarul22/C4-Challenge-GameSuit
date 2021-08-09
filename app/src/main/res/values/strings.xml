@@ -3,4 +3,13 @@
     <string name="pemain_1">Pemain 1</string>
     <string name="com">COM</string>
     <string name="draw">DRAW</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="player_2">Player 2</string>
+    <string name="pilih_lawanmu">PILIH LAWANMU</string>
+    <string name="landing1">TODO</string>
+    <string name="landing2">landing2</string>
+    <string name="hasil_permainan">Hasil Permainan</string>
+    <string name="main_lagi">Main Lagi</string>
+    <string name="kembali_ke_menu">Kembali Ke Menu</string>
 </resources>

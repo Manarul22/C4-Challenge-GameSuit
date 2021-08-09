@@ -78,7 +78,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/atma"
             android:rotation="-10"
-            android:text="@string/com"
+            android:text="@string/player_2"
             android:textColor="#00BCD4"
             android:textSize="24sp"
             android:textStyle="bold" />

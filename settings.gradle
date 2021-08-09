@@ -1,2 +1,2 @@
-rootProject.name = "C4 Challenge Game Suit"
+rootProject.name = "Challenge Game Suit"
 include ':app'

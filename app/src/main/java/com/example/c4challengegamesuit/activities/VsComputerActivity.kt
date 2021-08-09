@@ -1,13 +1,20 @@
-package com.example.c4challengegamesuit
+package com.example.c4challengegamesuit.activities
 
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
+import com.example.c4challengegamesuit.interfaces.Callback
+import com.example.c4challengegamesuit.controllers.Controller
+import com.example.c4challengegamesuit.R
+import com.example.c4challengegamesuit.fragments.MenuDialogFragment
 
-class MainActivity : AppCompatActivity(), Callback {
+class  VsComputerActivity : AppCompatActivity(), Callback {
 
     // Gets Id by findViewById
     private val batu by lazy { findViewById<ImageView>(R.id.batuPlayer) }
@@ -18,19 +25,23 @@ class MainActivity : AppCompatActivity(), Callback {
     private val scissors by lazy { findViewById<ImageView>(R.id.guntingCom) }
     private val versus by lazy { findViewById<ImageView>(R.id.imgVersus) }
     private val reset by lazy { findViewById<ImageView>(R.id.imgRefresh) }
+    private val imgUrl by lazy { findViewById<ImageView>(R.id.imgJudul) }
+    private val message by lazy { intent.getStringExtra("name") }
+    private val pemain by lazy { findViewById<TextView>(R.id.tvPemain) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        // Mengganti Nama Player
+        pemain.text = "$message"
+        // Permission image form Url
+        Glide.with(this).load("https://i.ibb.co/HC5ZPgD/splash-screen1.png").into(imgUrl)
         val controller = Controller(this)
         val dataChoicePlayer = arrayListOf(batu, kertas, gunting)
         val dataRandomCom = arrayListOf(rock, paper, scissors)
+        val choice = controller.vsCom
 
-        /** - Kode ImageView pada saat click ini sama
-         *  - Harus dibuat reusable
-            - Kesimpulan jika kode yang dipakai konsepnya sama makan buat reusable */
-
+        // Menentukan Pilihan Player dan Random Pilihan Computer
         dataChoicePlayer.forEachIndexed { index, imageView ->
             imageView.setOnClickListener {
                 for (item in dataChoicePlayer) {
@@ -40,12 +51,13 @@ class MainActivity : AppCompatActivity(), Callback {
                 }
                 val comPlay = (0..2).random()
                 for (item in dataRandomCom) {
-                    if (item == dataRandomCom)
+                    if (item == dataRandomCom[comPlay])
                         item.setBackgroundResource(R.drawable.select)
                     else item.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
                 }
-                controller.checkWinner(index.plus(1), comPlay)
-                Log.d("Main", "$comPlay Selected")
+                controller.checkWinnerVsCom(choice[index], choice[comPlay])
+                Toast.makeText(this, "Player memilih ${choice[index]}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Computer memilih ${choice[comPlay]}", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -53,7 +65,6 @@ class MainActivity : AppCompatActivity(), Callback {
             this.resetGame()
             Log.d("Main", "All Reset")
         }
-
     }
 
     private fun resetGame() {
@@ -64,13 +75,14 @@ class MainActivity : AppCompatActivity(), Callback {
         }
     }
 
-    override fun showWinner(resultWinner: Int) {
-        when (resultWinner) {
-            0 -> versus.setImageResource(R.drawable.p1menang)
-            1 -> versus.setImageResource(R.drawable.p2menang)
-            else -> versus.setImageResource(R.drawable.draw)
+    override fun showWinnerVsCpu(resultWinnerVsCpu: Int) {
+        when (resultWinnerVsCpu) {
+            0 -> MenuDialogFragment.newInstance("  $message \nMENANG!").show(supportFragmentManager, null)
+            1 -> MenuDialogFragment.newInstance(" $message \nKALAH!").show(supportFragmentManager, null)
+            else -> MenuDialogFragment.newInstance("SERI!").show(supportFragmentManager, null)
         }
     }
 }
+
 
 
